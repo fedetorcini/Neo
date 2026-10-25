@@ -1,0 +1,17 @@
+{
+  "scene": "DemoLevel1",
+  "checks": [
+    "Player crossed original navigation rectangle on painted ground",
+    "Actual camera including PixelPerfectCamera centers player",
+    "ProceduralGridMover moved navigation area with player",
+    "All moved graph nodes match ground, walls and rocks",
+    "Empty ground remains blocked",
+    "Control change retargets camera and moving navigation"
+  ],
+  "error": null,
+  "passed": true,
+  "start": "(5, 6)",
+  "end": "(-3, 6)",
+  "graphCenter": "(7.00, 6.00, 0.00)",
+  "view": "(0.50, 0.50, 10.00)"
+}

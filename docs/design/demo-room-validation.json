@@ -1,0 +1,82 @@
+{
+    "results": [
+        {
+            "scenario": "Machop real y un compañero registrado",
+            "passed": true
+        },
+        {
+            "scenario": "Paso diagonal solicitado se limita a cardinal",
+            "passed": true
+        },
+        {
+            "scenario": "Cambio de control espera la llegada",
+            "passed": true
+        },
+        {
+            "scenario": "Una casilla, sin diagonal",
+            "passed": true
+        },
+        {
+            "scenario": "Control transferido tras llegar",
+            "passed": true
+        },
+        {
+            "scenario": "El humano no empuja",
+            "passed": true
+        },
+        {
+            "scenario": "Empuje reserva origen y destino",
+            "passed": true
+        },
+        {
+            "scenario": "Una reserva ajena bloquea el paso",
+            "passed": true
+        },
+        {
+            "scenario": "Empuje termina en una casilla",
+            "passed": true
+        },
+        {
+            "scenario": "Ocupación se actualiza",
+            "passed": true
+        },
+        {
+            "scenario": "A* libera el paso tras empujar",
+            "passed": true
+        },
+        {
+            "scenario": "Pared impide el paso cardinal",
+            "passed": true
+        },
+        {
+            "scenario": "Diálogo congela energía y movimiento",
+            "passed": true
+        },
+        {
+            "scenario": "Agotamiento devuelve control al humano",
+            "passed": true
+        },
+        {
+            "scenario": "Antes de 25% no permite retomar",
+            "passed": true
+        },
+        {
+            "scenario": "Desde 25% permite retomar",
+            "passed": true
+        },
+        {
+            "scenario": "Seguimiento cruza el paso modificado",
+            "passed": true
+        },
+        {
+            "scenario": "Reinicio restaura roca y libera reservas",
+            "passed": true
+        },
+        {
+            "scenario": "Roca no entra en celda con humano",
+            "passed": true
+        }
+    ],
+    "error": "",
+    "finished": true
+}

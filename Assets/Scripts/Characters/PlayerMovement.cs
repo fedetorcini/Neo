@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Teleportable
 {
+    private NeoGridMotor gridMotor;
+    void Awake() { gridMotor = GetComponent<NeoGridMotor>(); }
     public LayerMask collisions;
     public float moveSpeed = 5f;
     public Transform movePoint;
-    public Transform render;
     private Vector3 targetPosition;
+
+    public Transform render;
     private Animator animator;
    
     private Path path;  //A* Path calculated
     private Seeker seeker;  //Path finding class
     private int currentWaypoint = 0; //Aux for pathing
+    private bool manualStep;
 
 
     private void OnPathComplete(Path seekerResultPath)
@@ -24,17 +28,6 @@ public class PlayerMovement : MonoBehaviour
             currentWaypoint = 1;
         }
     }
-
-    /*public override void UpdateTargetPosition()
-    {
-        if (seeker.IsDone())  
-        {
-            Vector3 auxPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition = new Vector3(RoundToPointFive(auxPos.x), RoundToPointFive(auxPos.y), transform.position.z);
-            seeker.StartPath(transform.position, targetPosition, OnPathComplete);
-        }
-    }
-    public override void UpdateIndependentTargetPosition(){}*/
 
     private void UpdatePath()
     {
@@ -46,11 +39,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetTarget(Vector3 newTarget)
     {
-        targetPosition = new Vector3(Mathf.Floor(newTarget.x), RoundToPointFive(newTarget.y), transform.position.z);
+        targetPosition = new Vector3(RoundToPointFive(newTarget.x), RoundToPointFive(newTarget.y), transform.position.z);
     }
 
     void Start()
     {
+        if (gridMotor != null) return;
         movePoint.parent = null;
         targetPosition = transform.position;
 
@@ -60,6 +54,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (gridMotor != null) return;
+        if (manualStep)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+            Animate(movePoint.position.x - transform.position.x, movePoint.position.y - transform.position.y);
+            if (transform.position == movePoint.position)
+            {
+                targetPosition = transform.position;
+                manualStep = false;
+                Animate(0, 0);
+            }
+            return;
+        }
+
         UpdatePath();
         if (transform.position != targetPosition)
         {
@@ -108,21 +116,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Animate(float x, float y)
     {
-        if (x > 0){
-            animator.SetBool("RunHorizontal", true);
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        } else if (y > 0){
-            animator.SetBool("RunUp", true);
-        } else if (x < 0){
-            animator.SetBool("RunHorizontal", true);
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        } else if (y < 0){
-            animator.SetBool("RunDown", true);
-        } else if (x == 0 && y == 0){
-            animator.SetBool("RunDown", false);
-            animator.SetBool("RunUp", false);
-            animator.SetBool("RunHorizontal", false);
-        }
+        if (animator == null) return;
+
+        bool horizontal = Mathf.Abs(x) >= Mathf.Abs(y);
+        bool movingHorizontal = horizontal && Mathf.Abs(x) > .001f;
+        bool movingVertical = !horizontal && Mathf.Abs(y) > .001f;
+        animator.SetBool("RunHorizontal", movingHorizontal);
+        animator.SetBool("RunUp", movingVertical && y > 0f);
+        animator.SetBool("RunDown", movingVertical && y < 0f);
+
+        if (movingHorizontal)
+            transform.localScale = new Vector3(x > 0f ? -1f : 1f, 1f, 1f);
     }
 
     public Vector3 GetPosition()
@@ -133,6 +137,35 @@ public class PlayerMovement : MonoBehaviour
     float RoundToPointFive(float number)
     {
         return Mathf.Floor(number) + .5f;
+    }
+
+    public bool MoveManual(Vector2 direction)
+    {
+        if (gridMotor != null) return gridMotor.Step(direction);
+        if (manualStep || direction.sqrMagnitude < .5f) return false;
+        direction = Mathf.Abs(direction.x) >= Mathf.Abs(direction.y)
+            ? new Vector2(Mathf.Sign(direction.x), 0f)
+            : new Vector2(0f, Mathf.Sign(direction.y));
+        Vector3 destination = transform.position + new Vector3(direction.x, direction.y, 0f);
+        if (Physics2D.OverlapCircle(destination, .32f, collisions) != null) return false;
+        destination.x = RoundToPointFive(destination.x);
+        destination.y = RoundToPointFive(destination.y);
+        targetPosition = destination;
+        movePoint.position = destination;
+        manualStep = true;
+        path = null;
+        currentWaypoint = 0;
+        return true;
+    }
+
+    public override void Teleport(Vector3 destiny)
+    {
+        if (gridMotor != null) { gridMotor.Teleport(destiny); return; }
+        manualStep = false;
+        path = null;
+        transform.position = new Vector3(destiny.x, destiny.y, transform.position.z);
+        movePoint.position = new Vector3(destiny.x, destiny.y, transform.position.z);
+        targetPosition = new Vector3(destiny.x, destiny.y, transform.position.z);
     }
 
 }

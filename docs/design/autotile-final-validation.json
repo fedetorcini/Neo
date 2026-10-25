@@ -1,0 +1,9 @@
+{
+  "reason": "Generated quarter composition changed the intended artwork; rule coverage did not establish visual correctness.",
+  "status": "reverted_after_visual_review",
+  "complete47StateArtwork": false,
+  "current": {
+    "PathTile": 6,
+    "Mountain": 13
+  }
+}

@@ -61,12 +61,12 @@ public class BasicMovementScript : MonoBehaviour
     {
         if (x > 0){
             animator.SetBool("RunHorizontal", true);
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+            render.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         } else if (y > 0){
             animator.SetBool("RunUp", true);
         } else if (x < 0){
             animator.SetBool("RunHorizontal", true);
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            render.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         } else if (y < 0){
             animator.SetBool("RunDown", true);
         } else if (x == 0 && y == 0){

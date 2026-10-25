@@ -1,0 +1,1 @@
+Physical blocks: 983; reachable landmarks: 8; four-layer static composition. Gameplay not tested.

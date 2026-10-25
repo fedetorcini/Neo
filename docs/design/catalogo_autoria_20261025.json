@@ -1,0 +1,504 @@
+[
+  {
+    "name": "Colliders",
+    "sorting": "Collider",
+    "order": 0,
+    "tiles": []
+  },
+  {
+    "name": "Terrain",
+    "sorting": "Terrain",
+    "order": -10000,
+    "tiles": [
+      {
+        "name": "Pallete1_1",
+        "path": "Assets/Resources/Demo/Art/NeoGrassA.asset",
+        "count": 642,
+        "sample": [
+          "(-17, -12, 0)",
+          "(-16, -12, 0)",
+          "(-15, -12, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_1",
+        "path": "Assets/Pallete/Pallete1_1.asset",
+        "count": 1864,
+        "sample": [
+          "(-14, -12, 0)",
+          "(-13, -12, 0)",
+          "(-12, -12, 0)"
+        ]
+      },
+      {
+        "name": "safari zzone part 1_178",
+        "path": "Assets/Pallete/Tilesets/safari zzone part 1_178.asset",
+        "count": 54,
+        "sample": [
+          "(1, -12, 0)",
+          "(4, -12, 0)",
+          "(5, -12, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_117",
+        "path": "Assets/Pallete/Pallete1_117.asset",
+        "count": 15,
+        "sample": [
+          "(2, -12, 0)",
+          "(2, -11, 0)",
+          "(2, -10, 0)"
+        ]
+      },
+      {
+        "name": "RockExtras_7",
+        "path": "Assets/Pallete/Tilesets/RockExtras_7.asset",
+        "count": 4,
+        "sample": [
+          "(3, -12, 0)",
+          "(3, -11, 0)",
+          "(8, -9, 0)"
+        ]
+      },
+      {
+        "name": "PathTile",
+        "path": "Assets/Sprites/AniamtedTiles/PathTile.asset",
+        "count": 16,
+        "sample": [
+          "(11, -12, 0)",
+          "(12, -12, 0)",
+          "(11, -11, 0)"
+        ]
+      },
+      {
+        "name": "RockExtras_5",
+        "path": "Assets/Pallete/Tilesets/RockExtras_5.asset",
+        "count": 7,
+        "sample": [
+          "(19, -12, 0)",
+          "(19, -11, 0)",
+          "(19, -10, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_115",
+        "path": "Assets/Pallete/Pallete1_115.asset",
+        "count": 6,
+        "sample": [
+          "(20, -12, 0)",
+          "(20, -11, 0)",
+          "(20, -10, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_116",
+        "path": "Assets/Pallete/Pallete1_116.asset",
+        "count": 6,
+        "sample": [
+          "(3, -10, 0)",
+          "(2, -9, 0)",
+          "(8, -7, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_121",
+        "path": "Assets/Pallete/Pallete1_121.asset",
+        "count": 6,
+        "sample": [
+          "(4, -10, 0)",
+          "(5, -10, 0)",
+          "(6, -10, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_122",
+        "path": "Assets/Pallete/Pallete1_122.asset",
+        "count": 3,
+        "sample": [
+          "(8, -10, 0)",
+          "(10, -7, 0)",
+          "(18, -5, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_124",
+        "path": "Assets/Pallete/Pallete1_124.asset",
+        "count": 12,
+        "sample": [
+          "(3, -9, 0)",
+          "(4, -9, 0)",
+          "(5, -9, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_125",
+        "path": "Assets/Pallete/Pallete1_125.asset",
+        "count": 3,
+        "sample": [
+          "(7, -9, 0)",
+          "(9, -6, 0)",
+          "(17, -4, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_114",
+        "path": "Assets/Pallete/Pallete1_114.asset",
+        "count": 1,
+        "sample": [
+          "(10, -6, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_486",
+        "path": "Assets/Pallete/Pallete1_486.asset",
+        "count": 2,
+        "sample": [
+          "(11, -6, 0)",
+          "(15, -6, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_487",
+        "path": "Assets/Pallete/Pallete1_487.asset",
+        "count": 2,
+        "sample": [
+          "(12, -6, 0)",
+          "(16, -6, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_107",
+        "path": "Assets/Pallete/Pallete1_107.asset",
+        "count": 1,
+        "sample": [
+          "(20, -6, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_2",
+        "path": "Assets/Pallete/Pallete1_2.asset",
+        "count": 33,
+        "sample": [
+          "(21, -6, 0)",
+          "(22, -6, 0)",
+          "(23, -6, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_145",
+        "path": "Assets/Pallete/Pallete1_145.asset",
+        "count": 2,
+        "sample": [
+          "(11, -5, 0)",
+          "(12, -5, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_207",
+        "path": "Assets/Pallete/Pallete1_207.asset",
+        "count": 4,
+        "sample": [
+          "(13, -5, 0)",
+          "(14, -5, 0)",
+          "(13, -4, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_211",
+        "path": "Assets/Pallete/Pallete1_211.asset",
+        "count": 1,
+        "sample": [
+          "(19, -5, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_380",
+        "path": "Assets/Pallete/Pallete1_380.asset",
+        "count": 9,
+        "sample": [
+          "(19, -4, 0)",
+          "(19, -3, 0)",
+          "(19, -2, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_406",
+        "path": "Assets/Pallete/Pallete1_406.asset",
+        "count": 10,
+        "sample": [
+          "(20, -4, 0)",
+          "(21, -4, 0)",
+          "(22, -4, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_389",
+        "path": "Assets/Pallete/Pallete1_389.asset",
+        "count": 1,
+        "sample": [
+          "(30, -4, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_289",
+        "path": "Assets/Pallete/Pallete1_289.asset",
+        "count": 52,
+        "sample": [
+          "(31, -4, 0)",
+          "(32, -4, 0)",
+          "(33, -4, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_430",
+        "path": "Assets/Pallete/Pallete1_430.asset",
+        "count": 9,
+        "sample": [
+          "(20, -3, 0)",
+          "(21, -3, 0)",
+          "(22, -3, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_411",
+        "path": "Assets/Pallete/Pallete1_411.asset",
+        "count": 1,
+        "sample": [
+          "(29, -3, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_413",
+        "path": "Assets/Pallete/Pallete1_413.asset",
+        "count": 5,
+        "sample": [
+          "(30, -3, 0)",
+          "(30, -2, 0)",
+          "(30, -1, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_368",
+        "path": "Assets/Pallete/Pallete1_368.asset",
+        "count": 34,
+        "sample": [
+          "(20, -2, 0)",
+          "(21, -2, 0)",
+          "(22, -2, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_437",
+        "path": "Assets/Pallete/Pallete1_437.asset",
+        "count": 3,
+        "sample": [
+          "(29, -2, 0)",
+          "(29, -1, 0)",
+          "(29, 0, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_445",
+        "path": "Assets/Pallete/Pallete1_445.asset",
+        "count": 1,
+        "sample": [
+          "(27, 1, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_446",
+        "path": "Assets/Pallete/Pallete1_446.asset",
+        "count": 8,
+        "sample": [
+          "(28, 1, 0)",
+          "(20, 2, 0)",
+          "(21, 2, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_419",
+        "path": "Assets/Pallete/Pallete1_419.asset",
+        "count": 2,
+        "sample": [
+          "(29, 1, 0)",
+          "(27, 2, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_421",
+        "path": "Assets/Pallete/Pallete1_421.asset",
+        "count": 1,
+        "sample": [
+          "(28, 2, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_422",
+        "path": "Assets/Pallete/Pallete1_422.asset",
+        "count": 9,
+        "sample": [
+          "(29, 2, 0)",
+          "(20, 3, 0)",
+          "(21, 3, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_397",
+        "path": "Assets/Pallete/Pallete1_397.asset",
+        "count": 2,
+        "sample": [
+          "(30, 2, 0)",
+          "(28, 3, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_292",
+        "path": "Assets/Pallete/Pallete1_292.asset",
+        "count": 49,
+        "sample": [
+          "(31, 2, 0)",
+          "(32, 2, 0)",
+          "(33, 2, 0)"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Terrain LV1",
+    "sorting": "Terrain",
+    "order": -9999,
+    "tiles": [
+      {
+        "name": "AnimatedFlowers",
+        "path": "Assets/Sprites/AniamtedTiles/AnimatedFlowers.asset",
+        "count": 31,
+        "sample": [
+          "(4, -12, 0)",
+          "(6, -12, 0)",
+          "(17, -12, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_486",
+        "path": "Assets/Pallete/Pallete1_486.asset",
+        "count": 7,
+        "sample": [
+          "(22, -12, 0)",
+          "(29, -12, 0)",
+          "(36, -12, 0)"
+        ]
+      },
+      {
+        "name": "Pallete1_487",
+        "path": "Assets/Pallete/Pallete1_487.asset",
+        "count": 7,
+        "sample": [
+          "(23, -12, 0)",
+          "(30, -12, 0)",
+          "(37, -12, 0)"
+        ]
+      },
+      {
+        "name": "treeForeground_2",
+        "path": "Assets/Pallete/treeForeground_2.asset",
+        "count": 2,
+        "sample": [
+          "(11, -5, 0)",
+          "(15, -5, 0)"
+        ]
+      },
+      {
+        "name": "treeForeground_3",
+        "path": "Assets/Pallete/treeForeground_3.asset",
+        "count": 2,
+        "sample": [
+          "(12, -5, 0)",
+          "(16, -5, 0)"
+        ]
+      },
+      {
+        "name": "RockExtras_1",
+        "path": "Assets/Pallete/Tilesets/RockExtras_1.asset",
+        "count": 1,
+        "sample": [
+          "(19, -5, 0)"
+        ]
+      },
+      {
+        "name": "RockExtras_16",
+        "path": "Assets/Pallete/Tilesets/RockExtras_16.asset",
+        "count": 17,
+        "sample": [
+          "(20, -5, 0)",
+          "(21, -5, 0)",
+          "(22, -5, 0)"
+        ]
+      },
+      {
+        "name": "treeForeground_0",
+        "path": "Assets/Pallete/treeForeground_0.asset",
+        "count": 2,
+        "sample": [
+          "(11, -4, 0)",
+          "(15, -4, 0)"
+        ]
+      },
+      {
+        "name": "treeForeground_1",
+        "path": "Assets/Pallete/treeForeground_1.asset",
+        "count": 2,
+        "sample": [
+          "(12, -4, 0)",
+          "(16, -4, 0)"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Foreground",
+    "sorting": "Foreground",
+    "order": 0,
+    "tiles": [
+      {
+        "name": "treeForeground_2",
+        "path": "Assets/Pallete/treeForeground_2.asset",
+        "count": 7,
+        "sample": [
+          "(22, -11, 0)",
+          "(29, -11, 0)",
+          "(36, -11, 0)"
+        ]
+      },
+      {
+        "name": "treeForeground_3",
+        "path": "Assets/Pallete/treeForeground_3.asset",
+        "count": 7,
+        "sample": [
+          "(23, -11, 0)",
+          "(30, -11, 0)",
+          "(37, -11, 0)"
+        ]
+      },
+      {
+        "name": "treeForeground_0",
+        "path": "Assets/Pallete/treeForeground_0.asset",
+        "count": 7,
+        "sample": [
+          "(22, -10, 0)",
+          "(29, -10, 0)",
+          "(36, -10, 0)"
+        ]
+      },
+      {
+        "name": "treeForeground_1",
+        "path": "Assets/Pallete/treeForeground_1.asset",
+        "count": 7,
+        "sample": [
+          "(23, -10, 0)",
+          "(30, -10, 0)",
+          "(37, -10, 0)"
+        ]
+      }
+    ]
+  }
+]

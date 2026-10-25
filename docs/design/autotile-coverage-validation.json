@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "tiles": [
+    {
+      "name": "PathTile",
+      "beforeExplicitCoverage": 256,
+      "afterExplicitCoverage": 256,
+      "states": 47,
+      "ruleCount": 47
+    },
+    {
+      "name": "Mountain",
+      "beforeExplicitCoverage": 112,
+      "afterExplicitCoverage": 256,
+      "states": 47,
+      "ruleCount": 47
+    }
+  ],
+  "status": "withdrawn_after_visual_review"
+}

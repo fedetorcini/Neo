@@ -1,0 +1,105 @@
+{
+  "designs": [
+    {
+      "name": "Lumin",
+      "replaces": "Pikachu",
+      "frames": 12,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "Brispa",
+      "replaces": "Beedrill",
+      "frames": 12,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "Pedrugo",
+      "replaces": "Machop",
+      "frames": 12,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "Junquin",
+      "replaces": "Psyduck",
+      "frames": 12,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "Caucel",
+      "replaces": "Dratini",
+      "frames": 12,
+      "width": 32,
+      "height": 16
+    },
+    {
+      "name": "Farolin",
+      "replaces": "Haunter",
+      "frames": 12,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "Granugo",
+      "replaces": "Machoke",
+      "frames": 12,
+      "width": 32,
+      "height": 32
+    }
+  ],
+  "clipsWithPreservedIdentityAndTiming": 64,
+  "prefabs": [
+    {
+      "path": "Assets/Prefabs/Machop.prefab",
+      "sprite": "Pedrugo_0",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Machop"
+    },
+    {
+      "path": "Assets/Prefabs/Partner.prefab",
+      "sprite": "Farolin_1",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Hunter"
+    },
+    {
+      "path": "Assets/Prefabs/Pokemon/Beedrill.prefab",
+      "sprite": "Brispa_0",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Beedrill"
+    },
+    {
+      "path": "Assets/Prefabs/Pokemon/Dratini.prefab",
+      "sprite": "Caucel_0",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Dratini"
+    },
+    {
+      "path": "Assets/Prefabs/Pokemon/Haunter.prefab",
+      "sprite": "Farolin_0",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Haunter"
+    },
+    {
+      "path": "Assets/Prefabs/Pokemon/Machoke.prefab",
+      "sprite": "Granugo_0",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Machoke"
+    },
+    {
+      "path": "Assets/Prefabs/Pokemon/Pikachu.prefab",
+      "sprite": "Lumin_0",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Pikachu"
+    },
+    {
+      "path": "Assets/Prefabs/Pokemon/Psyduck.prefab",
+      "sprite": "Junquin_0",
+      "scale": "(1.00, 1.00, 1.00)",
+      "controller": "Psyduck"
+    }
+  ],
+  "scene": "Assets/Scenes/BosqueDelCauce.unity"
+}

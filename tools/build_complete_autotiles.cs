@@ -1,0 +1,1 @@
+throw new System.InvalidOperationException("Experimental quarter-composition builder withdrawn after visual defects. Original PathTile and Mountain assets restored. Do not regenerate with this approach.");

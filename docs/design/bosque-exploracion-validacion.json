@@ -1,0 +1,17 @@
+{
+  "scene": "BosqueDelCauce 3",
+  "checks": [
+    "Player crossed original navigation rectangle on painted ground",
+    "Actual camera including PixelPerfectCamera centers player",
+    "ProceduralGridMover moved navigation area with player",
+    "All moved graph nodes match ground, walls and rocks",
+    "Wall still blocks direct movement",
+    "Empty ground remains blocked"
+  ],
+  "error": null,
+  "passed": true,
+  "start": "(39, 4)",
+  "end": "(39, 12)",
+  "graphCenter": "(39.00, 12.00, 0.00)",
+  "view": "(0.50, 0.50, 10.00)"
+}

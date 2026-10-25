@@ -8,6 +8,7 @@ public class PlayerAI : Controllable
 
     void Awake()
     {
+        tirerness = MAX_TIRERNESS;
         movementScript = GetComponent<PlayerMovement>();
     }
 
@@ -17,6 +18,10 @@ public class PlayerAI : Controllable
     }
 
     public override void Release()
+    {
+    }
+
+    public override void Recover()
     {
     }
 }

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "scene": "Assets/Scenes/BosqueDelCauce.unity",
+  "cells": 2094,
+  "checks": [
+    "Foliage idle moves while continuous terrain retains its original tint",
+    "Idle and contact effects coexist; ripple renderers active",
+    "Repeated footsteps restart cell reactions",
+    "One-shot reactions expire back to idle",
+    "Disable restores original matrices, colors and flags",
+    "Actual motor arrival triggers painted cells",
+    "Collision tile assets unchanged"
+  ]
+}

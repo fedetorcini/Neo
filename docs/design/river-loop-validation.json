@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "visibleFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "engineFrames": 527,
+  "cell": "(26, 13, 0)",
+  "fps": [
+    6.0
+  ],
+  "shader": "Neo/River Freshwater"
+}

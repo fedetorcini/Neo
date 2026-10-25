@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    /*public Dialogue dialogue;
-    public virtual int Interact(Transform interacting)
+    public virtual void Interact(Interactable interacting)
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        return 0;
-    }*/
-
+        Debug.Log("Hi! " + interacting.name + " this is an Interactable.");
+    }
 }
