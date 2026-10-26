@@ -21,6 +21,7 @@ public sealed class DemoPartnerCombat : MonoBehaviour
     public bool CanPushRocks => species == DemoSpecies.Machop;
     public string DisplayName => species == DemoSpecies.Machop ? "Machop" : "Pikachu";
     public Vector2 LastAimDirection => lastAimDirection;
+    public event System.Action<Vector2> AttackPerformed;
 
     public void SetSpecies(DemoSpecies value)
     {
@@ -53,6 +54,7 @@ public sealed class DemoPartnerCombat : MonoBehaviour
             }
             ShowStrike(lastAimDirection, new Color(1f, .63f, .28f), .85f);
         }
+        AttackPerformed?.Invoke(lastAimDirection);
         return true;
     }
 

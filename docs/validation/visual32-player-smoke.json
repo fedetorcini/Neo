@@ -1,0 +1,10 @@
+{
+  "scene": "Assets/Scenes/Visual32Reference.unity",
+  "launchedExecutable": "Builds/Visual32Reference/Neo32.exe",
+  "running": true,
+  "responding": true,
+  "graphics": "Direct3D 11 / RTX 3070",
+  "navigationInitialized": true,
+  "errors": [],
+  "scope": "Startup smoke in hidden Windows Player; interactive movement/push/attack tested in Editor Play"
+}

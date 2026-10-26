@@ -1,0 +1,26 @@
+{
+    "utc": "2026-10-26T00:08:56.3998252Z",
+    "scene": "Assets/Scenes/Visual32Reference.unity",
+    "passed": true,
+    "checks": [
+        "Board and navigation initialize after reopening the saved scene",
+        "All 180 floor cells persist",
+        "River and cliff block; stairs remain walkable",
+        "URP camera: 640x360, 32 PPU, integer upscale and windowbox",
+        "No inherited visual stretch",
+        "Human accepts a cardinal step",
+        "Human arrives exactly one world unit away",
+        "Space control path selects Pedrugo and switches camera target",
+        "Partner accepts a cardinal step",
+        "Partner arrives at the next cell",
+        "Existing push interaction starts",
+        "Push updates rock position and cell occupancy",
+        "A* follows changed rock occupancy",
+        "Existing combat accepts an attack",
+        "Combat displays the new directional attack frames",
+        "Movement resumes after the attack",
+        "Post-attack movement still covers one cell",
+        "Control and camera return to the human"
+    ],
+    "failures": []
+}
