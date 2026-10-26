@@ -122,7 +122,7 @@ public static class NeoCreatureArt
         var footprint = motor.footprint;
         // Native pixels stay on the 16 PPU world grid instead of being resampled to 95% fill.
         render.transform.localScale = new Vector3(render.transform.localScale.x < 0 ? -1 : 1, 1, 1);
-        render.transform.localPosition = new Vector3((footprint.x - 1) * .5f, (footprint.y - 1) * .5f, 0);
+        render.transform.localPosition = new Vector3((footprint.x - 1) * .5f, (render.sprite.rect.height / render.sprite.pixelsPerUnit - 1) * .5f, 0);
     }
 
     public static void Apply()

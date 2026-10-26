@@ -1,10 +1,11 @@
 {
-    "utc": "2026-10-26T00:18:18.6954684Z",
+    "utc": "2026-10-26T00:41:20.1873285Z",
     "scene": "Assets/Scenes/Visual32Reference.unity",
     "passed": true,
     "checks": [
         "Lumin: point, 32 PPU, no compression or mipmaps",
         "Lumin: expected native frame size and count",
+        "Lumin: transparent gutters on all 30 poses; no neighboring frame fragments",
         "Brispa: point, 32 PPU, no compression or mipmaps",
         "Brispa: expected native frame size and count",
         "Pedrugo: point, 32 PPU, no compression or mipmaps",
@@ -13,6 +14,7 @@
         "Granugo: expected native frame size and count",
         "Explorer: point, 32 PPU, no compression or mipmaps",
         "Explorer: expected native frame size and count",
+        "Explorer: transparent gutters on all 30 poses; no neighboring frame fragments",
         "Terrain: point, 32 PPU, no compression or mipmaps",
         "Terrain: expected native frame size and count",
         "Tree: point, 32 PPU, no compression or mipmaps",
@@ -37,8 +39,11 @@
         "IdleBack / Explorer: all poses bind correctly",
         "IdleFront / Explorer: all poses bind correctly",
         "IdleSide / Explorer: all poses bind correctly",
+        "WalkBack: four readable explorer walk poses at 16 FPS",
         "WalkBack / Explorer: all poses bind correctly",
+        "WalkFront: four readable explorer walk poses at 16 FPS",
         "WalkFront / Explorer: all poses bind correctly",
+        "WalkSide: four readable explorer walk poses at 16 FPS",
         "WalkSide / Explorer: all poses bind correctly",
         "ActionBack / Granugo: all poses bind correctly",
         "ActionFront / Granugo: all poses bind correctly",
@@ -67,7 +72,7 @@
         "WalkBack / Pedrugo: all poses bind correctly",
         "WalkFront / Pedrugo: all poses bind correctly",
         "WalkSide / Pedrugo: all poses bind correctly",
-        "195 animation keyframes sampled through the Animator"
+        "192 animation keyframes sampled through the Animator"
     ],
     "failures": []
 }

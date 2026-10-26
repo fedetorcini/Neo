@@ -11,7 +11,7 @@
     {"legacyId":"Pikachu","design":"Lumin","sourceSheet":"Assets/Sprites/Creatures/Lumin.png","draftSheet":"Assets/Visual32/Art/Lumin.png","framePixels":[32,32],"frames":30,"productionPromoted":false},
     {"legacyId":"Beedrill","design":"Brispa","sourceSheet":"Assets/Sprites/Creatures/Brispa.png","draftSheet":"Assets/Visual32/Art/Brispa.png","framePixels":[32,32],"frames":30,"productionPromoted":false},
     {"legacyId":"Machop","design":"Pedrugo","sourceSheet":"Assets/Sprites/Creatures/Pedrugo.png","draftSheet":"Assets/Visual32/Art/Pedrugo.png","framePixels":[32,32],"frames":30,"productionPromoted":false},
-    {"legacyId":"Machoke","design":"Granugo","sourceSheet":"Assets/Sprites/Creatures/Granugo.png","draftSheet":"Assets/Visual32/Art/Granugo.png","framePixels":[64,64],"frames":30,"productionPromoted":false},
+    {"legacyId":"Machoke","design":"Granugo","sourceSheet":"Assets/Sprites/Creatures/Granugo.png","draftSheet":"Assets/Visual32/Art/Granugo.png","framePixels":[64,64],"footprintCells":[2,1],"frames":30,"productionPromoted":false},
     {"legacyId":"Psyduck","design":"Junquin","framePixels":[32,32],"status":"pending"},
     {"legacyId":"Dratini","design":"Caucel","framePixels":[64,32],"status":"pending"},
     {"legacyId":"Haunter","design":"Farolin","framePixels":[64,64],"status":"pending"}

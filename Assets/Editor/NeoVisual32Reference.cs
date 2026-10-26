@@ -64,11 +64,13 @@ public static class NeoVisual32Reference
         var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(path);
         if (clip == null) { clip = new AnimationClip(); AssetDatabase.CreateAsset(clip, path); }
         clip.frameRate = fps;
-        var keys = new ObjectReferenceKeyframe[frames.Length + 1];
+        bool exactWalkCycle = name == "Explorer" && pose.StartsWith("Walk", StringComparison.Ordinal);
+        var keys = new ObjectReferenceKeyframe[frames.Length + (exactWalkCycle ? 0 : 1)];
         for (int i = 0; i < frames.Length; i++) keys[i] = new ObjectReferenceKeyframe { time = i / fps, value = frames[i] };
-        keys[frames.Length] = new ObjectReferenceKeyframe { time = frames.Length / fps, value = frames[frames.Length - 1] };
+        if (!exactWalkCycle) keys[frames.Length] = new ObjectReferenceKeyframe { time = frames.Length / fps, value = frames[frames.Length - 1] };
         AnimationUtility.SetObjectReferenceCurve(clip, EditorCurveBinding.PPtrCurve("", typeof(SpriteRenderer), "m_Sprite"), keys);
         var settings = AnimationUtility.GetAnimationClipSettings(clip); settings.loopTime = !pose.StartsWith("Action", StringComparison.Ordinal);
+        if (exactWalkCycle) settings.stopTime = frames.Length / fps;
         AnimationUtility.SetAnimationClipSettings(clip, settings); EditorUtility.SetDirty(clip); AssetDatabase.SaveAssetIfDirty(clip);
         return clip;
     }
@@ -90,7 +92,7 @@ public static class NeoVisual32Reference
         {
             int offset = row * 10;
             var idle = Clip(name, "Idle" + Directions[row], frames.Skip(offset).Take(2).ToArray(), 2);
-            var walk = Clip(name, "Walk" + Directions[row], frames.Skip(offset + 2).Take(4).ToArray(), 8);
+            var walk = Clip(name, "Walk" + Directions[row], frames.Skip(offset + 2).Take(4).ToArray(), name == "Explorer" ? 16 : 8);
             var action = Clip(name, "Action" + Directions[row], frames.Skip(offset + 6).Take(4).ToArray(), 8);
             var idleState = machine.states.Select(s => s.state).FirstOrDefault(s => s.name == idle.name) ?? machine.AddState(idle.name);
             var walkState = machine.states.Select(s => s.state).FirstOrDefault(s => s.name == walk.name) ?? machine.AddState(walk.name);
@@ -149,8 +151,12 @@ public static class NeoVisual32Reference
         var render = go.GetComponentsInChildren<SpriteRenderer>(true).First(r => r.transform.name == "Render");
         render.sprite = sheets[name][0]; render.sortingLayerName = "Terrain";
         render.transform.localScale = Vector3.one;
-        var motor = go.GetComponent<NeoGridMotor>(); var footprint = motor != null ? motor.footprint : Vector2Int.one;
-        render.transform.localPosition = new Vector3((footprint.x - 1) * .5f, (footprint.y - 1) * .5f + (name == "Explorer" ? .25f : 0), 0);
+        var motor = go.GetComponent<NeoGridMotor>();
+        if (name == "Granugo") motor.footprint = new Vector2Int(2, 1);
+        var footprint = motor != null ? motor.footprint : Vector2Int.one;
+        // The canvas may extend above the occupied cells; keep its feet anchored to the lower row.
+        float canvasHeight = sheets[name][0].rect.height / NeoVisualStandard.PixelsPerUnit;
+        render.transform.localPosition = new Vector3((footprint.x - 1) * .5f, (canvasHeight - 1) * .5f, 0);
         render.GetComponent<Animator>().runtimeAnimatorController = Controller(name, sheets[name]);
         var wild = go.GetComponent<NeoWildPokemon>(); if (wild != null) wild.breathAmount = 0;
         if (go.GetComponent<DemoPartnerCombat>() != null && go.GetComponent<NeoDirectionalSpriteAction>() == null) go.AddComponent<NeoDirectionalSpriteAction>();

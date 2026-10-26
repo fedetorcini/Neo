@@ -6,12 +6,12 @@
     "Assets/Scenes/Visual32Reference.unity"
   ],
   "outputPath": "C:/Users/fedet/Documents/Kraken/Neo/Builds/Visual32Reference/Neo32.exe",
-  "buildStartedAt": "2026-10-26T00:13:17.6784161Z",
-  "buildEndedAt": "2026-10-26T00:14:52.4587525Z",
-  "buildTimeMs": 94780,
-  "totalSizeBytes": 139715795,
+  "buildStartedAt": "2026-10-26T00:43:55.0756037Z",
+  "buildEndedAt": "2026-10-26T00:44:20.0680071Z",
+  "buildTimeMs": 24992,
+  "totalSizeBytes": 139710883,
   "totalErrors": 0,
-  "totalWarnings": 517,
+  "totalWarnings": 504,
   "warningGroups": [
     {
       "count": 12,
@@ -200,42 +200,6 @@
     {
       "count": 2,
       "message": "warning CS0618: 'IWorkItemContext.QueueFloodFill()' is obsolete: 'Avoid using. This will force a full recalculation of the connected components. In most cases the HierarchicalGraph class takes care of things automatically behind the scenes now. In pretty much all cases you should be able to remove the call to this function.'"
-    },
-    {
-      "count": 1,
-      "message": "warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindAnyObjectByType instead.'"
-    },
-    {
-      "count": 5,
-      "message": "warning CS0618: 'Object.FindObjectsOfType(Type)' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID, but if you do not need this using FindObjectSortMode.None is considerably faster.'"
-    },
-    {
-      "count": 1,
-      "message": "warning CS0618: 'Object.FindObjectsOfType<T>(bool)' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'"
-    },
-    {
-      "count": 1,
-      "message": "warning CS0618: 'Rigidbody2D.isKinematic' is obsolete: 'isKinematic has been deprecated. Please use bodyType.'"
-    },
-    {
-      "count": 1,
-      "message": "warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'."
-    },
-    {
-      "count": 1,
-      "message": "warning UAC1001: Field 'graph' type 'Pathfinding.GridGraph' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)"
-    },
-    {
-      "count": 1,
-      "message": "warning UAC1001: Field 'targetNode' type 'Pathfinding.GraphNode' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)"
-    },
-    {
-      "count": 1,
-      "message": "warning UAC1001: Field 'traversalProvider' type 'Pathfinding.BlockManager.TraversalProvider' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)"
-    },
-    {
-      "count": 1,
-      "message": "warning UAC1018: Field 'graphMask' has the same name as the [FormerlySerializedAs(\"graphMask\")] argument on another field in this type. Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/Manual/script-serialization-analyzer.html#uac1018)"
     }
   ],
   "errors": [],

@@ -66,11 +66,11 @@ public static class NeoPokemonAuthoring
             walkFront = F("Hunter", 3, 2, 3, 4), walkBack = F("Hunter", 15, 14, 15, 16), walkSide = F("Hunter", 27, 26, 27, 28),
             speed = 2, hover = .15f,
         },
-        // Machoke 1,5 m and bulky: 2x2. Sheet 8x3: columns 0-2 stand and step.
+        // Tall drawing, two ground cells. The upper body does not occupy another row.
         new Species
         {
             name = "Machoke", sheet = "Assets/Sprites/Characters/Machoke.png",
-            footprint = new Vector2Int(2, 2), wanderRadius = 2,
+            footprint = new Vector2Int(2, 1), wanderRadius = 2,
             idleFront = F("Machoke", 0), idleBack = F("Machoke", 8), idleSide = F("Machoke", 16),
             walkFront = F("Machoke", 0, 1, 0, 2), walkBack = F("Machoke", 8, 9, 8, 10), walkSide = F("Machoke", 16, 17, 16, 18),
             walkFps = 7, speed = 2,
@@ -202,7 +202,7 @@ public static class NeoPokemonAuthoring
             if (AssetDatabase.GetAssetPath(firstFrame).StartsWith("Assets/Sprites/Creatures/", StringComparison.Ordinal))
             {
                 render.localScale = Vector3.one;
-                render.localPosition = new Vector3((s.footprint.x - 1) * .5f, (s.footprint.y - 1) * .5f, 0);
+                render.localPosition = new Vector3((s.footprint.x - 1) * .5f, (firstFrame.rect.height / firstFrame.pixelsPerUnit - 1) * .5f, 0);
             }
 
             var sprite = Get<SpriteRenderer>(render.gameObject);

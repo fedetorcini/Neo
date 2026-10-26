@@ -78,7 +78,7 @@ MonoBehaviour:
   board: {fileID: 0}
   visual: {fileID: 3951833036846870936}
   speed: 2
-  footprint: {x: 2, y: 2}
+  footprint: {x: 2, y: 1}
 --- !u!114 &7415428445709744375
 MonoBehaviour:
   m_ObjectHideFlags: 0

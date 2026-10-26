@@ -22,6 +22,7 @@ public static class NeoVisual32Validation
     static Controller control;
     static NeoGridMotor player, partner;
     static NeoPushRock rock;
+    static readonly HashSet<Sprite> humanWalkFrames = new HashSet<Sprite>();
     static int phase;
     static double deadline;
 
@@ -61,6 +62,22 @@ public static class NeoVisual32Validation
             var frames = AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().ToArray();
             Require(report, frames.Length == pair.Value.z && frames.All(s => s.rect.size == new Vector2(pair.Value.x, pair.Value.y)),
                 pair.Key + ": expected native frame size and count");
+            if (pair.Key == "Lumin" || pair.Key == "Explorer")
+            {
+                var texture = new Texture2D(2,2);
+                try
+                {
+                    texture.LoadImage(File.ReadAllBytes(path));
+                    bool clear = true;
+                    int margin = pair.Key == "Explorer" ? 1 : 2;
+                    foreach (var sprite in frames)
+                        for (int y = 0; y < pair.Value.y; y++) for (int x = 0; x < pair.Value.x; x++)
+                            if (x < margin || y < margin || x >= pair.Value.x - margin || y >= pair.Value.y - margin)
+                                clear &= texture.GetPixel((int)sprite.rect.x + x, (int)sprite.rect.y + y).a == 0;
+                    Require(report, clear, pair.Key + ": transparent gutters on all 30 poses; no neighboring frame fragments");
+                }
+                finally { UnityEngine.Object.DestroyImmediate(texture); }
+            }
         }
         int poses = 0;
         var clips = AssetDatabase.FindAssets("t:AnimationClip", new[] { NeoVisual32Reference.Root })
@@ -82,6 +99,8 @@ public static class NeoVisual32Validation
                 var keys = AnimationUtility.GetObjectReferenceCurve(clip, binding);
                 int expectedFrames = clip.name.StartsWith("Idle", StringComparison.Ordinal) ? 2 : 4;
                 bool valid = keys.Select(k => k.value).Distinct().Count() == expectedFrames;
+                if (AssetDatabase.GetAssetPath(clip).Contains("/Explorer/") && clip.name.StartsWith("Walk", StringComparison.Ordinal))
+                    Require(report, Mathf.Approximately(clip.length, .25f), clip.name + ": four readable explorer walk poses at 16 FPS");
                 foreach (var key in keys)
                 {
                     playable.SetTime(key.time + .00001); graph.Evaluate(0);
@@ -91,7 +110,7 @@ public static class NeoVisual32Validation
             }
             finally { graph.Destroy(); UnityEngine.Object.DestroyImmediate(root); }
         }
-        Require(report, poses == 195, "195 animation keyframes sampled through the Animator");
+        Require(report, poses == 192, "192 animation keyframes sampled through the Animator");
         return Save(report, "visual32-assets");
     }
 
@@ -102,6 +121,7 @@ public static class NeoVisual32Validation
             throw new InvalidOperationException("Open Visual32Reference and enter Play first.");
         if (runtime != null) throw new InvalidOperationException("Validation is already running.");
         runtime = new Report { scene = NeoVisual32Reference.ScenePath };
+        humanWalkFrames.Clear();
         board = UnityEngine.Object.FindAnyObjectByType<NeoGridBoard>();
         control = UnityEngine.Object.FindAnyObjectByType<Controller>();
         player = board.actors.First(a => a.GetComponent<PlayerAI>() != null);
@@ -116,6 +136,16 @@ public static class NeoVisual32Validation
         }
         player.Teleport(NeoGridBoard.Center(new Vector2Int(9,4)));
         partner.Teleport(NeoGridBoard.Center(new Vector2Int(11,4))); rock.ResetRock();
+        var giant = board.actors.Single(a => a.name.StartsWith("Granugo", StringComparison.Ordinal));
+        giant.Teleport(NeoGridBoard.Center(new Vector2Int(13,6)));
+        var occupied = giant.CellsAt(giant.Cell).ToArray();
+        Require(runtime, occupied.Length == 2 && occupied.Contains(new Vector2Int(13,6)) && occupied.Contains(new Vector2Int(14,6)), "Giant occupies exactly the two lower cells");
+        foreach (var cell in occupied) board.Reserve(cell, giant);
+        Require(runtime, !board.CanEnter(new Vector2Int(13,6), player) && !board.CanEnter(new Vector2Int(14,6), player) &&
+            board.CanEnter(new Vector2Int(13,7), player) && board.CanEnter(new Vector2Int(14,7), player), "Giant blocks both feet cells and leaves both upper cells open");
+        Require(runtime, Mathf.Approximately(giant.visual.localPosition.y, .5f) && giant.visual.GetComponent<SpriteRenderer>().sprite.rect.height == 64,
+            "Giant keeps its 64-pixel tall drawing and original feet alignment");
+        Require(runtime, Mathf.Approximately(player.speed, 5), "Explorer movement speed remains 5 world units per second");
         Require(runtime, board.Ready && !DemoBootstrap.IsPaused, "Board and navigation initialize after reopening the saved scene");
         Require(runtime, board.floor.GetTilesBlock(board.floor.cellBounds).Count(t => t != null) == 180, "All 180 floor cells persist");
         Require(runtime, board.Blocked(new Vector2Int(2,2)) && board.Blocked(new Vector2Int(8,7)) && !board.Blocked(new Vector2Int(9,7)), "River and cliff block; stairs remain walkable");
@@ -126,8 +156,9 @@ public static class NeoVisual32Validation
             pixels.gridSnapping == UnityEngine.Rendering.Universal.PixelPerfectCamera.GridSnapping.UpscaleRenderTexture,
             "URP camera: 640x360, 32 PPU, integer upscale and windowbox");
         Require(runtime, board.actors.All(a => Mathf.Abs(a.visual.localScale.x) == 1 && a.visual.localScale.y == 1), "No inherited visual stretch");
-        Require(runtime, player.Step(Vector2.up), "Human accepts a cardinal step");
-        phase = 0; deadline = EditorApplication.timeSinceStartup + 8;
+        player.Teleport(NeoGridBoard.Center(new Vector2Int(13,7)));
+        Require(runtime, player.Step(Vector2.right), "Human can walk through the giant's upper row");
+        phase = -1; deadline = EditorApplication.timeSinceStartup + 8;
         EditorApplication.update += Tick;
         return "Runtime validation started; report: docs/validation/visual32-runtime.json";
     }
@@ -138,9 +169,20 @@ public static class NeoVisual32Validation
         {
             if (!EditorApplication.isPlaying) { Finish("Play stopped before validation finished"); return; }
             if (EditorApplication.timeSinceStartup > deadline) { Finish("Runtime phase " + phase + " timed out"); return; }
-            if (phase == 0 && !player.IsMoving)
+            if (phase == 0 && player.IsMoving && player.visual.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("WalkBack"))
+                humanWalkFrames.Add(player.visual.GetComponent<SpriteRenderer>().sprite);
+            if (phase == -1 && !player.IsMoving)
+            {
+                Require(runtime, player.Cell == new Vector2Int(14,7), "Human arrives through upper body cells");
+                player.Teleport(NeoGridBoard.Center(new Vector2Int(13,5)));
+                Require(runtime, !player.Step(Vector2.up), "Human cannot walk into the giant's feet");
+                player.Teleport(NeoGridBoard.Center(new Vector2Int(9,4)));
+                Require(runtime, player.Step(Vector2.up), "Human accepts a cardinal step"); phase = 0;
+            }
+            else if (phase == 0 && !player.IsMoving)
             {
                 Require(runtime, player.Cell == new Vector2Int(9,5) && player.transform.position == NeoGridBoard.Center(player.Cell), "Human arrives exactly one world unit away");
+                Require(runtime, humanWalkFrames.Count >= 2, "Explorer visibly advances walk poses during the actual grid step");
                 typeof(Controller).GetMethod("ToggleControl", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).Invoke(control, null);
                 Require(runtime, control.Active == partner.GetComponent<PartnerAI>() && partner.GetComponent<PartnerAI>().IsDirectlyControlled && control.mainCamera.target == partner.transform,
                     "Space control path selects Pedrugo and switches camera target");

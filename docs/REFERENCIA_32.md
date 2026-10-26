@@ -18,11 +18,13 @@ La referencia contiene explorador, Lumin, Brispa, Pedrugo y Granugo; terreno, ca
 ## Qué se implementó
 
 - Una unidad de mundo por casilla; importación a 32 PPU, Point, sin compresión ni mipmaps.
-- Explorador de 32 × 48; tres criaturas de 32 × 32; Granugo de 64 × 64. El tamaño del lienzo se conserva separado de las huellas originales de los motores.
+- Explorador de 32 × 48; tres criaturas de 32 × 32; Granugo de 64 × 64. Por indicación posterior del usuario, Granugo ocupa solamente las dos casillas inferiores (2 × 1), conservando el dibujo y su posición vertical.
 - Frente, espalda y costado; dos poses de reposo, cuatro de movimiento y cuatro de acción por orientación. El costado opuesto se refleja.
 - 150 poses de personajes en cinco hojas y 45 clips. Las acciones del catálogo están disponibles; el ataque real se conecta a Pedrugo, que ya tiene combate. No se agrega combate a criaturas que no lo tenían.
 - Cámara **URP** Pixel Perfect de 640 × 360, ampliación entera y márgenes. Desactivados HDR, MSAA y posprocesado en esta cámara.
 - Terreno simplificado por indicación del usuario: menos textura en césped, camino y acantilados para destacar las criaturas.
+- Explorador revisado con las proporciones de NPC que aportó el usuario: cabeza grande, cuerpo compacto, cara simple y dibujo visible de 42 píxeles de alto. Camina con cuatro poses más marcadas a 16 FPS, sin cambiar sus 5 unidades de mundo por segundo.
+- Reencuadradas las 30 poses de Lumin con márgenes transparentes: no se importan colas de cuadros vecinos en las vistas laterales. El empaquetador de `tools/Art/PackCharacterSheet.ps1` detecta las poses separadas y las coloca en la cuadrícula antes de importar.
 - Material de recorte para eliminar el halo semitransparente del árbol. El resto del arte conserva su transparencia.
 - Un importador reproducible que conserva los identificadores de las subdivisiones y los assets nuevos al regenerar.
 - Medidas de la referencia centralizadas en `NeoVisualStandard`; los generadores antiguos aún requieren su migración por familias.
@@ -33,12 +35,12 @@ Los PNG son **borradores de dirección artística** generados y normalizados a l
 
 En **Neo → Visual 32**:
 
-1. **Validar recursos de referencia**: dimensiones, cantidad de sprites, importación, clips y 195 claves reproducidas mediante Animator. Resultado en `docs/validation/visual32-assets.json`.
-2. Entrar en Play y ejecutar **Validar referencia en Play**: navegación, persistencia de las 180 casillas, movimiento de humano y compañero, cambio de control/cámara, empuje, actualización de A*, ataque y movimiento posterior. Sale de Play para restaurar la escena. Resultado en `docs/validation/visual32-runtime.json`.
+1. **Validar recursos de referencia**: dimensiones, cantidad de sprites, importación, márgenes transparentes, clips y 192 claves reproducidas mediante Animator. Resultado en `docs/validation/visual32-assets.json`.
+2. Entrar en Play y ejecutar **Validar referencia en Play**: navegación, persistencia de las 180 casillas, movimiento de humano y compañero, cambio de control/cámara, empuje, actualización de A*, ataque y movimiento posterior. Comprueba además que el jugador atraviesa las casillas superiores de Granugo y no puede entrar en las dos inferiores. Sale de Play para restaurar la escena. Resultado en `docs/validation/visual32-runtime.json`.
 
 La segunda comprobación automatiza las mismas rutas de control e interacción, pero no simula físicamente las teclas del teclado. Tampoco prueba todos los puzzles, combate, guardados ni transiciones del proyecto completo.
 
-La referencia se compiló para Windows de 64 bits: **Succeeded, cero errores, 517 advertencias**, en aproximadamente 95 segundos. Las advertencias incluyen importación antigua de DotNetZip/A*, APIs obsoletas y shaders de Sentis; están agrupadas en `docs/validation/visual32-build.json`. No se cambiaron dependencias para ocultarlas. La consola del Editor también conserva el error del comprobador HTTP de actualizaciones de A*, observado antes de esta entrega.
+La última revisión se compiló para Windows de 64 bits: **Succeeded, cero errores, 504 advertencias**, en aproximadamente 25 segundos. Las advertencias incluyen importación antigua de DotNetZip/A*, APIs obsoletas y shaders de Sentis; están agrupadas en `docs/validation/visual32-build.json`. No se cambiaron dependencias para ocultarlas. La consola del Editor también conserva el error del comprobador HTTP de actualizaciones de A*, observado antes de esta entrega.
 
 Se inició el ejecutable en segundo plano con Direct3D 11: permaneció activo, inicializó navegación y no registró excepciones durante la prueba de arranque. Esto no sustituye la inspección visual ni la interacción manual del ejecutable. Evidencia en `docs/validation/visual32-player-smoke.json`. Ejecutable local: `Builds/Visual32Reference/Neo32.exe`; no se agrega el binario a Git.
 
